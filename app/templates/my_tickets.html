@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketNest | Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
+    <script src="https://kit.fontawesome.com/08c0396a01.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="user-details">
+        <div class="left">
+            <p><i class="fa-solid fa-user"></i> {{ current_user.username }}</p>
+            <p><i class="fa-solid fa-user-tie"></i> {{ current_user.role }}</p>
+        </div>
+        <p class="logout"><a href="{{ url_for('main.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
+    </div>
+    <header>
+        <h1 class="logo">TicketNest</h1>
+        <nav>
+            <a href="{{ url_for('main.portal') }}"><i class="fa-solid fa-house"></i> Portal</a>
+            <a href="{{ url_for('main.my_tickets') }}"><i class="fa-solid fa-ticket"></i> View Purchase History</a></a>
+            <a href="{{ url_for('main.view_cart') }}"><i class="fa-solid fa-cart-shopping"></i> View Cart
+                {% if cart_count > 0 %}
+                    <span>({{ cart_count }})</span>
+                {% endif %}</a>
+            </a>
+        </nav>
+    </header>
+
+
+    <section class="events-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <div class="info">
+            <p><i class="fa fa-circle-info"></i> Here are your tickets for the events you've purchased. Feel free to download and save them for your convenience. Each ticket contains all the details you’ll need for the event, including the event name, date, time, and location. Enjoy your events!</p>
+        </div>
+        <div class="events-card-container my-tickets-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Ticket Purchased</th>
+                        <th>Price</th>
+                        <th>Purchase Date</th>
+                        <th>Payment Method</th>
+                        <th>Payment Status</th>
+                        <th>Download Ticket</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                        <tr>
+                            <td>{{ ticket.id }}</td>
+                            <td>{{ ticket.event.title }}</td>
+                            <td>{{ ticket.event.ticket_prices }}</td>
+                            <td>{{ ticket.purchase_date.strftime('%d %B %Y') }}</td>
+                            <td>Capitec Pay</td>
+                            <td>Paid</td>
+                            <td><a href="{{ url_for('main.ticket_qr', ticket_id=ticket.id) }}"><i class="fa-solid fa-qrcode"></i> Download</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>

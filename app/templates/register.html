@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketNest | Sign-Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/UAuthstyle.css') }}">
+    <script src="https://kit.fontawesome.com/08c0396a01.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+    <section class="left">
+        <div class="header">
+            <div class="logo">
+                <h1>TicketNest</h1>
+            </div>
+            <div class="description">
+                <h2>A secure and cozy place for all your ticketing needs.</h2>
+            </div> 
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 TicketNest. All rights reserved.</p>
+        </div>
+    </section>
+
+    <section class="right">
+        <div class="form-container">
+            <div class="links">
+                <a  href="{{ url_for('main.login') }}">Login</a>
+                <span>|</span>
+                <a class="active" href="{{ url_for('main.register') }}">Sign-Up</a>
+            </div>
+
+            <div class="form-content">
+                <form id="registration-form" action="{{ url_for('main.register') }}" method="POST">
+                    {{ form.hidden_tag() }}
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div class="flash-messages">
+                                {% for category, message in messages %}
+                                    <div class="flash-{{ category }}">{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    <div class="form-group">
+                        {{ form.username.label(class="form-label") }}
+                        {{ form.username(class="form-input", id="username") }}
+                        <p id="username-error" class="error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-input", id="email") }}
+                        <p id="email-error" class="error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label(class="form-label") }}
+                        {{ form.password(class="form-input", type="password", id="password") }}
+                        <p id="password-error" class="error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        {{ form.confirm_password.label(class="form-label", ) }}
+                        {{ form.confirm_password(class="form-input", id="confirm-password") }}
+                        <p id="confirm-password-error" class="error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="form-submit", id="registration-submit") }}
+                    </div>
+                    <p style="color: white; margin-top: 12px;">Already have an account? <a style="color: white;" href="{{ url_for('main.login') }}">Login</a></p>
+                </form>
+            </div>
+           
+        </div>
+        <div class="right-footer">
+            <p>Let's Groove together.</p>
+            <img src="{{ url_for('static', filename='/img/6-removebg-preview.crop.png') }}" alt="">
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='/js/script.js') }}"></script>
+</body>
+</html>

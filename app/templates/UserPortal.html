@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketNest | Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
+    <script src="https://kit.fontawesome.com/08c0396a01.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="user-details">
+        <div class="left">
+            <p><i class="fa-solid fa-user"></i> {{ current_user.username }}</p>
+            <p><i class="fa-solid fa-user-tie"></i> {{ current_user.role }}</p>
+        </div>
+        <p class="logout"><a href="{{ url_for('main.logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></p>
+    </div>
+    <header>
+        <h1 class="logo">TicketNest</h1>
+        <nav>
+            <a href="{{ url_for('main.portal') }}"><i class="fa-solid fa-house"></i> Portal</a>
+            <a href="{{ url_for('main.my_tickets') }}"><i class="fa-solid fa-ticket"></i> View Purchase History</a></a>
+            <a href="{{ url_for('main.view_cart') }}"><i class="fa-solid fa-cart-shopping"></i> View Cart
+                {% if cart_count > 0 %}
+                    <span>({{ cart_count }})</span>
+                {% endif %}</a>
+            </a>
+        </nav>
+    </header>
+
+
+    <section class="events-container">
+        <div class="events-card-container">
+            {% for event in events %}
+                <div class="event-card">
+                    <h2 class="title">{{ event.title }}</h2>
+                    <p class="description">{{ event.description }}</p>
+                    <p class="remaining">Remaining Tickets: {{ event.total_tickets }}</p>
+                    <br><br>                    
+                    <a class="link" href="{{ url_for('main.add_to_cart', event_id=event.id) }}">Add ticket to cart</a>
+                    <a class="link" href="{{ url_for('main.event_info', event_id=event.id) }}">View Event Details</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

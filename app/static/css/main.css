@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tourney:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    color: black;
+    background-image: url(../img/pexels-myatezhny39-2209530.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+
+.user-details {
+    padding: 5px 30px;
+    background-color: rgb(200, 255, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    color: black;
+    font-size: 11pt;
+    position: fixed;
+    top: 0;
+    z-index: 99999999;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.user-details a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 30px;
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 30px;
+    z-index: 99999;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    font-size: 11pt;
+    transition: all 0.3s ease-in-out;
+}
+
+.logo {
+    font-family: "Lobster", cursive;
+    font-size: 25pt;
+    font-weight: 400;
+}
+
+.events-container {
+    margin-top: 120px;
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    font-size: 11pt;
+}
+
+.events-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    font-size: 30pt;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: "Sixtyfour", cursive;
+    margin-bottom: 20px;
+    
+}
+
+
+.events-container h1 {
+    font-size: 20pt;
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid white;
+    font-family: "Sixtyfour", cursive;
+}
+
+
+.event-card {
+    padding: 40px;
+    color: white;
+    gap: 20px;
+    background-color: black;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.event-card:hover {
+    background-color: rgb(200, 255, 0);
+    color: black;
+}
+
+.description {
+    font-size: 12pt;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.remaining {
+    font-size: 15pt;
+}
+
+.link {
+    font-size: 12pt;
+    background-color: rgb(200, 255, 0);
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.link:hover {
+    background-color: black;
+    color: rgb(200, 255, 0);
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(200, 255, 0);
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.my-tickets-container {
+    background-color: black;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.my-tickets-container thead {
+    background-color: rgb(200, 255, 0);
+    color: black;
+    font-weight: 400;
+    text-align: left;
+
+}
+
+
+.my-tickets-container th {
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+.my-tickets-container td {
+    padding: 15px;
+    word-wrap: break-word;
+}
+
+.my-tickets-container table {
+    border-collapse: collapse;
+    border: none;
+    
+}
+
+.my-tickets-container::-webkit-scrollbar {
+    display: none;
+}
+
+.my-tickets-container tbody tr:hover {
+    background-color: rgb(200, 255, 0);
+    color: black;
+}
+
+
+.my-tickets-container a {
+    text-decoration: none;
+    color: black;
+    background-color: rgb(200, 255, 0);
+    border-radius: 10px;
+    padding: 3px 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.my-tickets-container a:hover {
+    background-color: black;
+    color: rgb(200, 255, 0);
+}
+
+.info {
+    background-color: black;
+    color: rgb(200, 255, 0);
+    padding: 12px;
+    font-size: 11pt;
+}
+
+.cart-container {
+    width: 100%;
+    background-color: black;
+    padding: 30px;
+    border-radius: 10px;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.items-container form {
+    width: 100%;
+   
+}
+
+.cart-container::-webkit-scrollbar {
+    width: 2px;
+    background-color: black;
+}
+
+.cart-container::-webkit-scrollbar-thumb {
+    background-color: rgb(200, 255, 0);
+}
+
+
+.cart-item {
+    display: flex;
+    align-items: start;
+    border-bottom: 2px solid rgb(27, 27, 27);
+    padding: 10px;
+    border-radius: 0px;
+    width: 100%;
+    gap: 10px;
+}
+
+.cart-btn {
+    width: 100%;
+}
+
+.items-total {
+    text-align: right;
+    color: rgb(200, 255, 0);
+    font-size: 15pt;
+    margin-top: 5px;
+    font-weight: 400;
+
+}
+
+.cart-title {
+    font-size: 12pt;
+    font-weight: 400;
+    text-transform: none !important;
+    font-family: "Poppins", sans-serif;
+    color: white;
+}
+
+.cart-quantity {
+    font-size: 11pt;
+    color: white;
+}
+
+.cart-price {
+    font-size: 11pt;
+    font-size: 15pt;
+    color: rgb(200, 255, 0);
+
+}
+
+.item-description a {
+    color: red;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.item-image img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.flash-messages {
+    width: 100%;
+    background-color: blanchedalmond;
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
